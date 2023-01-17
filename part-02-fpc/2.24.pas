@@ -5,10 +5,9 @@ uses
     altstr;
 
 const
-    MsgUsage = './02.24 <x> <y> <formatting>'#10#10 +
+    MsgUsage = './2.24 <x> <y> <formatting>'#10#10 +
         'The program prints the result of multiplying x and y.'#10#10 +
-        'The third parameter is to specify the number of digits'#10 +
-        'after the decimal point.'#10;
+        'The 3rd parameter specifies the number of digits after the point.'#10;
 
 var
     x, y: real;
