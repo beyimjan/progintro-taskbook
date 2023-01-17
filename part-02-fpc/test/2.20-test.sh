@@ -1,6 +1,6 @@
 #/bin/bash
 #
-# Copyright (C) 2022 Tamerlan Bimzhanov
+# Copyright (C) 2022, 2023 Tamerlan Bimzhanov
 
 prog=./2.20
 
