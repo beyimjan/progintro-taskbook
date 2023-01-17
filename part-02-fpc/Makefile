@@ -6,10 +6,9 @@ EXE = -g
 BINS = 2.20 2.24 2.43
 
 %: %.pas
-	$(FPC) $(EXE) -Fuunits/ $<
+	$(FPC) $(EXE) $<
 
 all: $(BINS)
 
 clean:
-	find . \( -name '*.o' -o -name '*.ppu' \) -delete
-	rm -f $(BINS)
+	rm -f *.o *.ppu $(BINS)

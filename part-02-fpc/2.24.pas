@@ -2,7 +2,7 @@
 }
 
 uses
-    altstr;
+    strutils;
 
 const
     MsgUsage = './2.24 <x> <y> <formatting>'#10#10 +

@@ -3,7 +3,7 @@
   Copyright (C) 2022, 2023 Tamerlan Bimzhanov
 }
 
-unit altstr;
+unit strutils;
 
 interface
 
