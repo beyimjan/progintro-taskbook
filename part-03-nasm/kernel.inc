@@ -40,48 +40,48 @@
 
   %rep %0
     %rotate -1
-	  	push dword %1
+	push dword %1
   %endrep
-		mov eax, [esp]
-		int 80h
-		jnc %%ok
-		mov ecx, eax
-		mov eax, -1
-		jmp short %%q
+	mov eax, [esp]
+	int 80h
+	jnc %%ok
+	mov ecx, eax
+	mov eax, -1
+	jmp short %%q
   %%ok:
-		xor ecx, ecx
+	xor ecx, ecx
   %%q:
-		add esp, (%0-1)*4
+	add esp, (%0-1)*4
 
 %elifdef OS_LINUX
 
   %if %0 > 1
-		push ebx
+	push ebx
     %if %0 > 4
-		push esi
-		push edi
-		push ebp
+	push esi
+	push edi
+	push ebp
     %endif
   %endif
 
   %rep %0
     %rotate -1
-  		push dword %1
+	push dword %1
   %endrep
 
-		pop eax
+	pop eax
   %if %0 > 1
-		pop ebx
+	pop ebx
     %if %0 > 2
-		pop ecx
+	pop ecx
       %if %0 > 3
-		pop edx
+	pop edx
         %if %0 > 4
-		pop esi
+	pop esi
           %if %0 > 5
-		pop edi
+	pop edi
             %if %0 > 6
-		pop ebp
+	pop ebp
               %if %0 > 7
                 %error "Can't handle Linux syscalls for more than 6 params"
               %endif
@@ -91,25 +91,25 @@
       %endif
     %endif
   %endif
-		int 80h
-		mov ecx, eax
-		and ecx, 0fffff000h
-		cmp ecx, 0fffff000h
-		jne %%ok
-		mov ecx, eax
-		neg ecx
-		mov eax, -1
-		jmp short %%q
-  %%ok:		xor ecx, ecx
+	int 80h
+	mov ecx, eax
+	and ecx, 0fffff000h
+	cmp ecx, 0fffff000h
+	jne %%ok
+	mov ecx, eax
+	neg ecx
+	mov eax, -1
+	jmp short %%q
+  %%ok:	xor ecx, ecx
   %%q:
 
   %if %0 > 1
     %if %0 > 4
-		pop ebp
-		pop edi
-		pop esi
+	pop ebp
+	pop edi
+	pop esi
     %endif
-		pop ebx
+	pop ebx
   %endif
 
 %else
