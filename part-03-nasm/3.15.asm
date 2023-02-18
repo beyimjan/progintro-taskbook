@@ -6,33 +6,35 @@ global _start
 
 section .text
 _start:
-main:	xor ebx, ebx		; if EBX = 0 then brackets are balanced
+main:	xor ebx, ebx		; If EBX = 0 then brackets are balanced
 
 getch:	GETCHAR
-	cmp eax, -1		; if eof then
-	jz quit
-	cmp al, `\n`		; elif AL = `\n`
-	jz print
-	cmp al, '('		; elif AL = '(' then
-	jnz cb
+	cmp eax, -1		; If EOF is reached then
+	jz quit			;   Finish the program
+	cmp al, `\n`		; Elif AL = `\n`
+	jz print		;   Display the result
+	cmp al, '('		; Elif AL = '(' then
+	jnz closed_parentheses
 	inc ebx			;   EBX++
 	jmp short getch
-cb:	cmp al, ')'		; elif AL = ')' then
+closed_parentheses:
+	cmp al, ')'		; Elif AL = ')' then
 	jnz getch
 	dec ebx			;   EBX--
-	jnge break		; elif EBX < 0
-	jmp short getch		; else
+	jnge break		; Elif EBX < 0: for the input like ')('
+	jmp short getch		; Else
 break:	GETCHAR
 	cmp eax, -1
 	jz quit
 	cmp al, `\n`
-	jnz break		; nested loop
+	jnz break
 print:	test ebx, ebx
 	jnz no
 	PRINT `YES\n`
-	jmp short nl
+	jmp short new_line
 no:	PRINT `NO\n`
-nl:	xor ebx, ebx
+new_line:
+	xor ebx, ebx
 	jmp getch
 
 quit:	FINISH
