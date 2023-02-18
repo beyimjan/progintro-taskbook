@@ -1,5 +1,4 @@
-{ Copyright (C) 2022, 2023 Tamerlan Bimzhanov
-}
+{ Copyright (C) 2022, 2023 Tamerlan Bimzhanov }
 
 unit lstr_list;
 
