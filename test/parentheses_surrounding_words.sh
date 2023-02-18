@@ -2,9 +2,8 @@
 #
 # Copyright (C) 2022, 2023 Tamerlan Bimzhanov
 
-prog=./2.20
-
-[ -f $prog ] || { echo Couldn\'t find the program to test! >&2 ; exit 1 ; }
+[ -n "$prog" ] || { echo Variable prog is not defined! >&2 ; exit 1 ; }
+[ -x "$prog" ] || { echo Couldn\'t find the program to test! >&2 ; exit 1 ; }
 
 while read -r question && read -r answer ; do
     result=$(echo -e "$question" | $prog)
