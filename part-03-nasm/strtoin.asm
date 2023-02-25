@@ -30,7 +30,7 @@ strtoin:
 
 	cmp dword [ebp+16], 0		; length = 0?
 	jne .nzl			;   NO!
-	jmp short .error		;     YES
+	jmp .error		;     YES
 
 .nzl:	xor eax, eax			; EAX = 0 -- result
 
