@@ -18,7 +18,7 @@
 ;; hidden, etc) and take into account that you don't have them all.
 ;;
 
-%define STUD_IO_LINUX
+;%define STUD_IO_LINUX
 ;%define STUD_IO_FREEBSD
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

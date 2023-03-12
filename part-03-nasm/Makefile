@@ -1,18 +1,16 @@
 # Copyright (C) 2022, 2023 Tamerlan Bimzhanov
 
-NASM = nasm
-
 ifndef $(OS)
-OS=LINUX
-else
-ifneq ($(OS), LINUX)
-ifneq ($(OS), FREEBSD)
-$(error Valid values for the OS variable are 'LINUX' and 'FREEBSD')
-endif
-endif
+OS = $(shell uname -s | tr 'a-z' 'A-Z')
 endif
 
-ASFLAGS = -g -d OS_$(OS) -f elf
+OS_SUPPORTED = LINUX FREEBSD
+ifeq (, $(filter $(OS), $(OS_SUPPORTED)))
+$(error Unknown OS, only Linux and FreeBSD are supported)
+endif
+
+AS = nasm
+ASFLAGS = -g -d STUD_IO_$(OS) -d OS_$(OS) -f elf
 
 LD = ld
 
@@ -25,7 +23,7 @@ clean:
 	rm -f *.o $(BINS) $(BINS2)
 
 %.o: %.asm
-	$(NASM) $(ASFLAGS) $<
+	$(AS) $(ASFLAGS) $<
 
 $(BINS): $(BINS:=.o)
 	$(LD) -m elf_i386 $@.o -o $@
