@@ -3,10 +3,10 @@
 
 #include "4.06.h"
 
-int put_sum(int *a, int*b, int*c)
+int put_sum(int *a, int *b, int *c)
 {
-    *a = *a + *b + *c;
-    *b = *a;
-    *c = *a;
-    return *a;
+  *a = *a + *b + *c;
+  *b = *a;
+  *c = *a;
+  return *a;
 }

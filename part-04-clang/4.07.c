@@ -5,9 +5,9 @@
 
 int count_spaces(const char *str)
 {
-    int res = 0;
-    for(; *str; str++)
-        if(*str == ' ')
-            res++;
-    return res;
+  int res = 0;
+  for (; *str; str++)
+    if (*str == ' ')
+      res++;
+  return res;
 }
