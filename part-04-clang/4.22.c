@@ -218,6 +218,7 @@ int main()
   init_pair(rb_black, COLOR_GREEN, -1);
 
   cbreak();
+  noecho();
   curs_set(0);
 
   keypad(stdscr, TRUE);
