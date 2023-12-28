@@ -1,3 +1,6 @@
+/* Copyright (C) 2023 Tamerlan Bimzhanov
+ */
+
 #include <curses.h>
 #include <ncurses.h>
 #include <stdio.h>
