@@ -25,10 +25,7 @@ void find_files_by_name(const char *curr_dir, const char *fname)
     if (strcmp(entry->d_name, ".") == 0 || strcmp(entry->d_name, "..") == 0)
       continue;
 
-    if (entry->d_type == DT_REG && strcmp(entry->d_name, fname) == 0) {
-      printf("%s/%s\n", curr_dir, fname);
-    }
-    else if (entry->d_type == DT_DIR) {
+    if (entry->d_type == DT_DIR) {
       size_t entry_dname_length;
       char *subdirectory;
       entry_dname_length = strlen(entry->d_name);
@@ -38,6 +35,9 @@ void find_files_by_name(const char *curr_dir, const char *fname)
       strcat(subdirectory, entry->d_name);
       find_files_by_name(subdirectory, fname);
       free(subdirectory);
+    }
+    else if (strcmp(entry->d_name, fname) == 0) {
+      printf("%s/%s\n", curr_dir, fname);
     }
   }
 
